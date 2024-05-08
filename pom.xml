@@ -12,6 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<app.name>github-actions-max-1</app.name>
 
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
@@ -38,13 +39,14 @@
 				        
 				        <username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
-				        <applicationName>${project.artifactId}-7765657</applicationName>
+				        <applicationName>${app.name}-7765657</applicationName>
 				        <environment>dev</environment>
 				        <workers>1</workers>
 				        <workerType>MICRO</workerType>
 				        <objectStoreV2>true</objectStoreV2>
 				        <region>us-east-2</region>
 				        <properties>
+							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 							<secure.key>fdasasfaas</secure.key>
 						</properties>
 				        
@@ -83,6 +85,18 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>mule-enterprise</id>
+			<name>Mule Enterprise Repository</name>
+			<url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -99,7 +113,18 @@
             <enabled>true</enabled>
           </snapshots>
         </pluginRepository>
-        
+        <pluginRepository>
+			<id>mule-public</id>
+			<name>Mule Public Repository</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
