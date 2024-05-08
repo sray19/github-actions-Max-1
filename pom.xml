@@ -41,7 +41,7 @@
 				        <username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
 				        <applicationName>${app.name}-7765657</applicationName>
-				        <environment>${env}</environment>
+				        <environment>dev</environment>
 				        <workers>1</workers>
 				        <workerType>MICRO</workerType>
 				        <objectStoreV2>true</objectStoreV2>
