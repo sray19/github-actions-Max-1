@@ -6,10 +6,14 @@ on:
 #Trigger the workflow on push or pull request events on main branch
   push:
     branches: 
-      - ${{ github.ref_name }} = 'dev'
+      - 'dev'
+      - '!Training'
+      - '!main'
   pull_request:
     branches: 
-      - ${{ github.ref_name }} = 'dev'
+      - 'dev'
+      - '!Training'
+      - '!main'
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
