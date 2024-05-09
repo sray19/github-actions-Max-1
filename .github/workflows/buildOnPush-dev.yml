@@ -9,11 +9,13 @@ on:
       - 'dev'
       - '!Training'
       - '!main'
+      - '!*m e r g e'
   pull_request:
     branches: 
       - 'dev'
       - '!Training'
       - '!main'
+      - '!*m e r g e'
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
@@ -98,7 +100,6 @@ jobs:
         echo " "
         #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
         #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
-        echo ${{secrets.ENVIRONMENT}} | sed 's/./& /g'
         echo ${{ github.ref_name }} | sed 's/./& /g'
         
         ls -l
