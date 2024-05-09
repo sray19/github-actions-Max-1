@@ -5,9 +5,9 @@ name: Build and Deploy to Sandbox
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
-    branches: [ main ]
+    branches: [ dev ]
   pull_request:
-    branches: [main]
+    branches: [dev]
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
