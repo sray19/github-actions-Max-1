@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.name>github-actions-max-1</app.name>
 
-		<app.runtime>4.6-java8</app.runtime>
+		<app.runtime>4.6-java8</app.runtime>    <!-- Added properties used in build/plugin/config  -->
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
  
@@ -48,6 +48,7 @@
 				        <properties>
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 							<secure.key>fdasasfaas</secure.key>
+							<decryption.key>dfa</decryption.key>
 						</properties>
 				        
 				    </cloudHubDeployment>

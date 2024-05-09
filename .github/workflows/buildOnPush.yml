@@ -86,6 +86,7 @@ jobs:
         USERNAME: ${{ secrets.anypoint_cicd_username }}
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
         DECRYPTION_KEY: ${{ secrets.decryption_key }}
+        env: ${{ secrets.ENVIRONMENT }}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
