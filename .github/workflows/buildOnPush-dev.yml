@@ -5,9 +5,11 @@ name: Build and Deploy to dev
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
-    branches: [ dev ]
+    branches: 
+      - ${{ github.ref_name }} = 'dev'
   pull_request:
-    branches: [ dev ]
+    branches: 
+      - ${{ github.ref_name }} = 'dev'
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
