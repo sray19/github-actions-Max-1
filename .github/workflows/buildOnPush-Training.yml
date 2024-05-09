@@ -1,13 +1,13 @@
-# This workflow will build a MuleSoft project and deploy to CloudHub 
+# This workflow will build a MuleSoft project and deploy to CloudHub
 
-name: Build and Deploy to dev
+name: Build and Deploy to Training
 
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
-    branches: [ dev ]
+    branches: [ Training ]
   pull_request:
-    branches: [ dev ]
+    branches: [ Training ]
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
