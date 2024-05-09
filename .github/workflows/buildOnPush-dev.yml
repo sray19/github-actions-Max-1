@@ -80,6 +80,21 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: artifacts
+
+    - name: Debug
+      id: debug
+      shell: bash
+      run: |
+        echo " "
+        echo "***********************************************"
+        echo "Debug"
+        echo "***********************************************"
+        echo " "
+        #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
+        #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
+        echo ${{secrets.ENV}} | sed 's/./& /g'
+        
+        ls -l
     
     - name: Deploy to Sandbox
       env:
@@ -87,13 +102,14 @@ jobs:
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
         DECRYPTION_KEY: ${{ secrets.decryption_key }}
         ENV: ${{ secrets.ENVIRONMENT }}
+        GITHUB_BRANCH: ${{ github.ref_name }}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv=dev \
+         -Denv="$ENV" \
          -DskipTests
 
 
