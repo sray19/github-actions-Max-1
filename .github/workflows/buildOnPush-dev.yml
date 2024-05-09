@@ -92,7 +92,7 @@ jobs:
         echo " "
         #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
         #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
-        echo ${{secrets.ENV}} | sed 's/./& /g'
+        echo ${{secrets.ENVIRONMENT}} | sed 's/./& /g'
         
         ls -l
     
