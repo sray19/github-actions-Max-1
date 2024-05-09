@@ -73,7 +73,7 @@
 	</dependencies>
 
 	<repositories>
-	<!-- Added below Repository v2 -->
+	<!-- Added dependency Repositories here -->
 		<repository>
 			<id>anypoint-exchange-v3</id>
 			<name>Anypoint Exchange</name>
@@ -101,7 +101,7 @@
 	</repositories>
 
 	<pluginRepositories>
-	<!-- Added below PluginRepository -->	
+	<!-- Added Mule enterprise Repo to download mule runtime  -->	
 		<pluginRepository>
           <id>mule-enterprise</id>
           <name>MuleSoft Enterprise Repository</name>
