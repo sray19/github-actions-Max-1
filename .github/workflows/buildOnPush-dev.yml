@@ -7,13 +7,10 @@ on:
   push:
     branches: 
       - 'dev'
-      - 'Training'
-      - '!main'
+     
   pull_request:
     branches: 
-      - '!dev'
       - 'Training'
-      - '!main'
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
