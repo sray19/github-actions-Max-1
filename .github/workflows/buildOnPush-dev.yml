@@ -1,6 +1,6 @@
 # This workflow will build a MuleSoft project and deploy to CloudHub 
 
-name: Build and Deploy to dev
+name: Build and Deploy to DEV 
 
 on:
 #Trigger the workflow on push or pull request events on main branch
@@ -23,6 +23,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: 
+      name: ${github.ref_name}
     
     steps:
     
