@@ -106,7 +106,7 @@ jobs:
         echo ${{ github.ref_name }} | sed 's/./& /g'
         echo "pullReq"
         echo ${{ github.event.issue.pull_request }} | sed 's/./& /g'
-        echo: 'xxx'
+        
         echo ${{ github.ref }} | sed 's/./& /g'
         
         ls -l
