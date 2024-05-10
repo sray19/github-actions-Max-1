@@ -1,19 +1,19 @@
 # This workflow will build a MuleSoft project and deploy to CloudHub 
 
-name: Build and Deploy to dev
+name: Build and Deploy to DEV
 
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
     branches: 
       - 'dev'
-      - '!Training'
+      - 'Training'
       - '!main'
       - '!*m e r g e'
   pull_request:
     branches: 
       - 'dev'
-      - '!Training'
+      - 'Training'
       - '!main'
       - '!*m e r g e'
     
@@ -23,6 +23,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: 
+      name: ${github.ref_name}
     
     steps:
     
@@ -69,10 +71,11 @@ jobs:
           name: artifacts
           path: target/*.jar
 
-
+ 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    #if: github.event_name != 'pull_request'
 
     steps:    
     
@@ -101,10 +104,16 @@ jobs:
         #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
         #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
         echo ${{ github.ref_name }} | sed 's/./& /g'
+        echo "pullReq"
+        echo ${{ github.event.issue.pull_request }} | sed 's/./& /g'
+        
+        echo ${{ github.ref }} | sed 's/./& /g'
         
         ls -l
     
-    - name: Deploy to Sandbox
+    - name: Deploy to Development
+      #if: ${{ github.ref_name }} == 'dev'
+      if: github.ref == 'refs/heads/dev'
       env:
         USERNAME: ${{ secrets.anypoint_cicd_username }}
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
@@ -120,6 +129,26 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv="$ENV" \
          -DskipTests
+
+
+    - name: Deploy to Training
+      #if: ${{ github.ref_name }} == 'Training'
+      if: github.ref == 'refs/heads/Training'
+      env:
+        USERNAME: ${{ secrets.anypoint_cicd_username }}
+        PASSWORD: ${{ secrets.anypoint_cicd_password }}
+        DECRYPTION_KEY: ${{ secrets.decryption_key }}
+        #ENV: ${{ secrets.ENVIRONMENT }}
+        ENV: ${{ github.ref_name }} #Branch Name
+        #GITHUB_BRANCH: ${{ github.ref_name }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv="$ENV" \
+         -DskipTests     
 
 
 
