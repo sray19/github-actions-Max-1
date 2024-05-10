@@ -7,13 +7,13 @@ on:
   push:
     branches: 
       - 'dev'
-      - '!Training'
+      - 'Training'
       - '!main'
       - '!*m e r g e'
   pull_request:
     branches: 
       - 'dev'
-      - '!Training'
+      - 'Training'
       - '!main'
       - '!*m e r g e'
     
@@ -75,7 +75,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
+    #if: github.event_name != 'pull_request'
 
     steps:    
     
@@ -108,7 +108,8 @@ jobs:
         
         ls -l
     
-    - name: Deploy to Sandbox
+    - name: Deploy to Development
+      if: ${{ github.ref_name }} == 'dev'
       env:
         USERNAME: ${{ secrets.anypoint_cicd_username }}
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
@@ -124,6 +125,25 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv="$ENV" \
          -DskipTests
+
+
+    - name: Deploy to Training
+      if: ${{ github.ref_name }} == 'Training'
+      env:
+        USERNAME: ${{ secrets.anypoint_cicd_username }}
+        PASSWORD: ${{ secrets.anypoint_cicd_password }}
+        DECRYPTION_KEY: ${{ secrets.decryption_key }}
+        #ENV: ${{ secrets.ENVIRONMENT }}
+        ENV: ${{ github.ref_name }} #Branch Name
+        #GITHUB_BRANCH: ${{ github.ref_name }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv="$ENV" \
+         -DskipTests     
 
 
 
