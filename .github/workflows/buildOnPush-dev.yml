@@ -112,22 +112,24 @@ jobs:
         ls -l
     
     - name: Deploy to Development
-      if: ${{ github.ref_name }} == 'dev'
-      env:
-        USERNAME: ${{ secrets.anypoint_cicd_username }}
-        PASSWORD: ${{ secrets.anypoint_cicd_password }}
-        DECRYPTION_KEY: ${{ secrets.decryption_key }}
-        #ENV: ${{ secrets.ENVIRONMENT }}
-        ENV: ${{ github.ref_name }} #Branch Name
-        #GITHUB_BRANCH: ${{ github.ref_name }}
+      #if: ${{ github.ref_name }} == 'dev'
+      if: github.ref == 'refs/heads/dev'
       run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
-         -Denv="$ENV" \
-         -DskipTests
+        env:
+          USERNAME: ${{ secrets.anypoint_cicd_username }}
+          PASSWORD: ${{ secrets.anypoint_cicd_password }}
+          DECRYPTION_KEY: ${{ secrets.decryption_key }}
+          #ENV: ${{ secrets.ENVIRONMENT }}
+          ENV: ${{ github.ref_name }} #Branch Name
+          #GITHUB_BRANCH: ${{ github.ref_name }}
+        run: |
+          artifactName=$(ls *.jar | head -1)
+          mvn deploy -DmuleDeploy \
+           -Dmule.artifact=$artifactName \
+           -Danypoint.username="$USERNAME" \
+           -Danypoint.password="$PASSWORD" \
+           -Denv="$ENV" \
+           -DskipTests
 
 
     - name: Deploy to Training
