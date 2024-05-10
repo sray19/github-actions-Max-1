@@ -103,6 +103,7 @@ jobs:
         #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
         #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
         echo ${{ github.ref_name }} | sed 's/./& /g'
+        echo ${{ github.event.issue.pull_request }} | sed 's/./& /g'
         
         ls -l
     
