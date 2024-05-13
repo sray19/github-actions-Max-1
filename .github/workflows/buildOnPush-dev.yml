@@ -7,10 +7,10 @@ name: Build and Deploy to DEV
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
-    branches: ['dev', 'Training']
+    branches: ['dev', 'Training', 'main']
      
-  pull_request:
-    branches: ['dev','Training']
+  #pull_request:
+  #  branches: ['dev','Training']
     
   #Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
@@ -145,5 +145,23 @@ jobs:
          -Denv="$ENV" \
          -DskipTests     
 
+    - name: Deploy to Production
+      #if: ${{ github.ref_name }} == 'Training'
+      if: github.ref == 'refs/heads/main'
+      env:
+        USERNAME: ${{ secrets.anypoint_cicd_username }}
+        PASSWORD: ${{ secrets.anypoint_cicd_password }}
+        DECRYPTION_KEY: ${{ secrets.decryption_key }}
+        #ENV: ${{ secrets.ENVIRONMENT }}
+        ENV: ${{ github.ref_name }} #Branch Name
+        #GITHUB_BRANCH: ${{ github.ref_name }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD" \
+         -Denv=Prod \
+         -DskipTests   
 
 
