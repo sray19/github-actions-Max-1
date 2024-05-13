@@ -7,7 +7,7 @@ name: Build and Deploy to DEV
 on:
 #Trigger the workflow on push or pull request events on main branch
   push:
-    branches: ['dev']
+    branches: ['dev', 'Training']
      
   pull_request:
     branches: ['Training']
