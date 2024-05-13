@@ -145,7 +145,7 @@ jobs:
          -Denv="$ENV" \
          -DskipTests     
 
-````- name: Deploy to Production
+    - name: Deploy to Production
       #if: ${{ github.ref_name }} == 'Training'
       if: github.ref == 'refs/heads/main'
       env:
