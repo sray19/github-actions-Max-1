@@ -20,6 +20,12 @@
 	</properties>
   
 	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/munit</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -45,6 +51,7 @@
 				        <workerType>MICRO</workerType>
 				        <objectStoreV2>true</objectStoreV2>
 				        <region>us-east-2</region>
+				        <businessGroupId>${env.BUS_GROUP_ID}</businessGroupId>
 				        <properties>
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
 							<secure.key>fdasasfaas</secure.key>
