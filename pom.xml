@@ -17,6 +17,7 @@
 		<!-- Added properties used in build/plugin/config  -->
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
+	
 	<build>
 		<testResources>
 			<testResource>
