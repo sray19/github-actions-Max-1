@@ -92,17 +92,15 @@ jobs:
       shell: bash
       run: |
         echo " "
-        echo "***********************************************"
-        echo "Debug"
-        echo "***********************************************"
-        echo " "
+        echo "****************DEBUG*************************"
         #echo ${{secrets.ANYPOINT_PLATFORM_PASSWORD}} | sed 's/./& /g'
         #echo ${{secrets.ANYPOINT_PLATFORM_USERNAME}} | sed 's/./& /g'
-        echo ${{ github.ref_name }} | sed 's/./& /g'
-        echo "pullReq"
+        echo "github.ref_name: " ${{ github.ref_name }} | sed 's/./& /g'
+        echo "pullReq111"
         echo ${{ github.event.issue.pull_request }} | sed 's/./& /g'
         
         echo ${{ github.ref }} | sed 's/./& /g'
+        echo "Debug Done" | sed 's/./& /g'
         
         ls -l
     
@@ -163,5 +161,3 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=Prod \
          -DskipTests   
-
-
