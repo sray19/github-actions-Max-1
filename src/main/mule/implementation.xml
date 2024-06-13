@@ -4,12 +4,10 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a20ced11-8fd1-45d4-9cae-f92ac29f0b69" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
 	<flow name="github-actions-max-1Flow" doc:id="69c31d44-d2e2-4680-924f-607c38cb64de" >
-		<http:listener doc:name="Listener" doc:id="0092e5e4-71a7-49d3-a943-fb9f424e262e" config-ref="HTTP_Listener_config" path="/test"/>
+		<http:listener doc:name="Listener" doc:id="0092e5e4-71a7-49d3-a943-fb9f424e262e" path="/test" config-ref="HTTP_Listener_config"/>
 		<set-payload value='#["Working"]' doc:name="Set Payload" doc:id="32ead5c0-36f2-4d4b-a5b4-bc5f5d17c427" />
 		<logger level="INFO" doc:name="Logger" doc:id="ed8e5580-5bc7-4e11-8842-098f93ae2af0" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="28b4588f-29db-4965-9e5e-432ae85f3623" />
 	</flow>
 </mule>

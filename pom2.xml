@@ -17,7 +17,6 @@
 		<!-- Added properties used in build/plugin/config  -->
 		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
-	
 	<build>
 		<testResources>
 			<testResource>
@@ -40,7 +39,7 @@
 				<configuration>
 					<classifier>mule-application</classifier>
 					<cloudHubDeployment>
-						<uri>${deployment.url}</uri>
+						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${app.runtime}</muleVersion>
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
