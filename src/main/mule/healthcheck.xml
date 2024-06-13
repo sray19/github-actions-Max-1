@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+  <flow name="healthcheck_flow" doc:id="1f759348-154a-4b76-a343-5c4e5fbbf3ce" >
+    <http:listener doc:name="Listener-healthcheck" doc:id="cd42cdee-d099-494b-bfc8-530089dfdb4d" path="/healthcheck" config-ref="HTTP_Listener_config"/>
+    <set-payload value='#["API Up and Running"]' doc:name="Set Payload" doc:id="61b2e956-b598-4b32-9bb3-9c4618968a56" />
+    <logger level="INFO" doc:name="Logger" doc:id="3a83a01b-9cf4-4968-9789-dfb3926f5b8d" message="#[payload]"/>
+  </flow>
+</mule>
