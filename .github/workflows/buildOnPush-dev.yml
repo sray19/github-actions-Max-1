@@ -103,6 +103,7 @@ jobs:
         echo ${{ github.event.issue.pull_request }} | sed 's/./& /g'
         
         echo ${{ github.ref }} | sed 's/./& /g'
+        echo "Debug Done" | sed 's/./& /g'
         
         ls -l
     
