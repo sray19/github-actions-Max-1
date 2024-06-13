@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+  <configuration-properties doc:name="Configuration properties" doc:id="56049c2e-1bd5-4f55-8119-04b057399fb2" file="config/common-properties.yaml" />
+  <configuration-properties doc:name="Configuration properties" doc:id="c998da67-68b2-4c94-b8cb-f608a437f543" file="config/${env}-properties.yaml" />
+  <global-property doc:name="Global Property" doc:id="906a2903-7b84-46a0-99dc-87ba13645b02" name="env" value="dev" />
+	
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="547c737d-14c8-4df4-902f-79e5b890aa7d">
+		<http:listener-connection host="0.0.0.0" port="${deployment.http.listner.port}" />
+	</http:listener-config>
+	
+</mule>
