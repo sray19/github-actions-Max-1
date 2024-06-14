@@ -1,0 +1,8 @@
+#Environment Specific Properties:  ~~~ DEV Properties ~~~
+
+deployment:
+  workers: "1"
+  workerType: "MICRO"
+  http:
+    listner:
+      port: "8081"
