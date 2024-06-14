@@ -112,7 +112,8 @@ jobs:
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
         DECRYPTION_KEY: ${{ secrets.decryption_key }}
         #ENV: ${{ secrets.ENVIRONMENT }}
-        ENV: ${{ github.ref_name }} #Branch Name
+        #ENV: ${{ github.ref_name }} #Branch Name
+        ENV: ${{ github.ref_name }}
         #GITHUB_BRANCH: ${{ github.ref_name }}
       run: |
         artifactName=$(ls *.jar | head -1)
@@ -120,7 +121,7 @@ jobs:
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
          -Danypoint.password="$PASSWORD" \
-         -Denv="$ENV" \
+         -Denv=dev \
          -DskipTests
 
 
