@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
   <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d89b23b9-c17a-4722-bada-2ab01cca3f45">
 		<http:listener-connection host="0.0.0.0" port="${deployment.http.listner.port}" />
 	</http:listener-config>
   <configuration-properties doc:name="Configuration properties" doc:id="56049c2e-1bd5-4f55-8119-04b057399fb2" file="config/common-properties.yaml" />
   <configuration-properties doc:name="Configuration properties" doc:id="c998da67-68b2-4c94-b8cb-f608a437f543" file="config/${env}-properties.yaml" />
-	
-	
+  <secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="0c42540e-05f4-4044-b7d8-66ce1a1f68c6" file="config/${env}-secure-properties.yaml" key="${encrypt.key}">
+        <secure-properties:encrypt algorithm="Blowfish" />
+    </secure-properties:config>
 	
 </mule>

@@ -1,5 +1,8 @@
 #Environment Specific Properties:  ~~~ DEV Properties ~~~
 
+api:
+  id: "xxss"
+  
 deployment:
   workers: "1"
   workerType: "MICRO"

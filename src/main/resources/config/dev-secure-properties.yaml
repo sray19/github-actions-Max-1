@@ -1,0 +1,15 @@
+#Dev Secure App Properties
+        
+https:
+  keyPass: "![LMwU9lU49ETVhX81ziCo4w==]"
+
+app:
+  salesforce:
+    cloud:
+      auth:
+        username: "![]"
+        password: "![/==]"
+        oldpassword: "![==]"
+        consumerKey: "![+/==]"
+        consumerSecret: "![]"
+        certPassword: "![==]"
