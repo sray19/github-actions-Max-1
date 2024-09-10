@@ -1,4 +1,4 @@
-#Environment Specific Properties:  ~~~ DEV Properties ~~~
+#Environment Specific Properties:  ~~~ staging Properties ~~~
 
 api:
   id: "xxss"

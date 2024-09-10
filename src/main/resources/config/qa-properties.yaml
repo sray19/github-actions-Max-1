@@ -1,4 +1,4 @@
-#Environment Specific Properties:  ~~~ DEV Properties ~~~
+#Environment Specific Properties:  ~~~ qa Properties ~~~
 
 api:
   id: "xxss"
