@@ -103,7 +103,33 @@ jobs:
         echo "Debug Done" | sed 's/./& /g'
         
         ls -l
-    
+
+
+    - name: Deploy to Development1TEST
+      #if: ${{ github.ref_name }} == 'dev'
+      if: github.ref == 'refs/heads/dev'
+      env:
+        #USERNAME: ${{ secrets.anypoint_cicd_username }}
+        #PASSWORD: ${{ secrets.anypoint_cicd_password }}
+        CONN_APP_CLIENTID: ${{ secrets.CONN_APP_CLIENTID }}
+        CONN_APP_CLIENTSECRET: ${{ secrets.CONN_APP_CLIENTSECRET }}
+        
+        DECRYPTION_KEY: ${{ secrets.decryption_key }}
+        #ENV: ${{ secrets.ENVIRONMENT }}
+        #ENV: ${{ github.ref_name }} #Branch Name
+        ENV: ${{ github.ref_name }}
+        #GITHUB_BRANCH: ${{ github.ref_name }}
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -DconnectedApp.clientId="$CONN_APP_CLIENTID" \
+         -DconnectedApp.clientSecret="$CONN_APP_CLIENTSECRET" \
+         -DconnectedApp.grantType=client_credentials \
+         -Denv=dev \
+         -DskipTests
+
+         
     - name: Deploy to Development
       #if: ${{ github.ref_name }} == 'dev'
       if: github.ref == 'refs/heads/dev'
