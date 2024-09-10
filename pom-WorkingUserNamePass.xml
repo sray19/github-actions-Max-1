@@ -44,16 +44,8 @@
 					<cloudHubDeployment>
 						<uri>${deployment.url}</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						
-						<!--  Config needed for Username and password -->
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
-						
-						<!-- Config needed for Connected App -->
-						<connectedAppClientId>${connectedApp.clientId}</connectedAppClientId>
-						<connectedAppClientSecret>${connectedApp.clientSecret}</connectedAppClientSecret>
-						<connectedAppGrantType>${connectedApp.grantType}</connectedAppGrantType>
-						
 						<applicationName>${app.name}-${env}</applicationName>
 						<environment>${env}</environment>
 						<workers>1</workers>
