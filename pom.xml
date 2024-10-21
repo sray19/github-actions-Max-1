@@ -43,7 +43,7 @@
 					<cloudHubDeployment>
 						<uri>${deployment.url}</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						<!--  Config needed for Username and password -->
+						<!--  Config needed for Username and password --> 
 						<!-- <username>${anypoint.username}</username> -->
 						<!-- <password>${anypoint.password}</password> -->
 						<!-- Config needed for Connected App -->
