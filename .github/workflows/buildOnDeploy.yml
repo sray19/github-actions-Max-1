@@ -2,7 +2,7 @@
 
 
 
-name: Build and Deploy to DEV
+name: Build and Deploy to DEV-Test
 
 on:
 #Trigger the workflow on push or pull request events on main branch
