@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
 	<groupId>com.mycompany</groupId>
 	<artifactId>usncb-mule-template</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -17,9 +16,8 @@
 
 		<app.runtime>4.6-java8</app.runtime>
 		<!-- Added properties used in build/plugin/config  -->
-		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.2.0</mule.maven.plugin.version>
 	</properties>
-
 
 	<build>
 		<testResources>
@@ -45,16 +43,13 @@
 					<cloudHubDeployment>
 						<uri>${deployment.url}</uri>
 						<muleVersion>${app.runtime}</muleVersion>
-						
 						<!--  Config needed for Username and password -->
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
-						
 						<!-- Config needed for Connected App -->
 						<connectedAppClientId>${connectedApp.clientId}</connectedAppClientId>
 						<connectedAppClientSecret>${connectedApp.clientSecret}</connectedAppClientSecret>
 						<connectedAppGrantType>${connectedApp.grantType}</connectedAppGrantType>
-						
 						<applicationName>${app.name}-${env}</applicationName>
 						<environment>${env}</environment>
 						<workers>1</workers>
