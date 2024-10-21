@@ -100,7 +100,7 @@ jobs:
         echo "github.ref_name: " ${{ github.ref_name }} | sed 's/./& /g'
         echo "github.event.issue.pull_request: " ${{ github.event.issue.pull_request }} | sed 's/./& /g'
         echo "github.ref: " ${{ github.ref }} | sed 's/./& /g'
-        echo "Debug Done" | sed 's/./& /g'
+        echo "Debug Done1" | sed 's/./& /g'
         
         ls -l
     
