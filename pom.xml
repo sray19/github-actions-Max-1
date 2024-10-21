@@ -44,8 +44,8 @@
 						<uri>${deployment.url}</uri>
 						<muleVersion>${app.runtime}</muleVersion>
 						<!--  Config needed for Username and password -->
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
+						<!-- <username>${anypoint.username}</username> -->
+						<!-- <password>${anypoint.password}</password> -->
 						<!-- Config needed for Connected App -->
 						<connectedAppClientId>${connectedApp.clientId}</connectedAppClientId>
 						<connectedAppClientSecret>${connectedApp.clientSecret}</connectedAppClientSecret>
